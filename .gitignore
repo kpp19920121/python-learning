@@ -1,0 +1,14 @@
+/workspace
+/logs
+**.log
+**/.classpath
+**.settings
+**.project
+**.log
+**/.iml
+**/.idea
+**/target
+
+
+*.iml
+*.xml
