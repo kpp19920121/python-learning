@@ -28,8 +28,12 @@
 # 安装依赖 #
 首先，确保你已安装必要的 Python 库：
 
-	pip install requests
-	pip install gitpython
+	pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests 
+	
+	pip install -i https://pypi.tuna.tsinghua.edu.cn/simple gitpython 
+	
+	pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  python-gitlab
+
 # 配置 #
 ## GitLab 配置 ##
 

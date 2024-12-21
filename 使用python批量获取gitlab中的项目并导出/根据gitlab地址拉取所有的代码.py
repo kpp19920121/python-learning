@@ -6,21 +6,31 @@ from concurrent.futures import ThreadPoolExecutor
 
 # 设置 base_url 和 Personal Access Token
 #gitlab的url
-base_url = "https://192.168.233.133:30443"
+detault_base_url = "https://192.168.233.133:30443"
+
+user_input_base_url = input("请输入gitlab地址默认(https://192.168.233.133:30443): ").strip()
+
+base_url = user_input_base_url if user_input_base_url else detault_base_url
+
 
 #gitlab中配置的token
 token = "-KJgwpw9UCNaXHT2G-xx"  # 替换为你生成的 Token
 
 
 #群组信息
-subGroup="xxx/xxx/xxx/xxx"
+user_input_subGroup = input("请输入gitlab默认群组(xxx/xxx/xxx/xxx): ").strip()
+
+subGroup = user_input_subGroup if user_input_subGroup else 'xxx/xxx/xxx/xxx'
 
 
 # 获取当前脚本所在目录路径
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
-# 设置目标目录为脚本所在目录下的一个子目录
-target_dir = script_dir
+# 提示用户输入导出目录
+user_input_dir = input("请输入导出目录（默认为脚本所在目录）: ").strip()
+
+# 使用用户输入的目录，若未输入则使用脚本所在目录
+target_dir = user_input_dir if user_input_dir else script_dir
 
 # 创建目标目录（如果不存在）
 if not os.path.exists(target_dir):
