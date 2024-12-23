@@ -40,6 +40,11 @@ def adjust_to_next_workday(start_date):
     return start_date
 
 def calculate_DevloperLastEndDate(excel_file_path):
+
+
+
+    print("开始获取excel中所有开发的最晚结束日期作为下一个计划的开始日期:")
+
     """
     计算每个开发人员的上一个任务结束日期。
     :param excel_file_path: Excel 文件路径 (str)
@@ -47,9 +52,16 @@ def calculate_DevloperLastEndDate(excel_file_path):
     """
     global developer_last_end
 
+    developer_last_end={}
+    print(f"这是测试的:{developer_last_end}")
+
+
+
+
     if  developer_last_end:
         print("字典不为空，直接返回")
-        return developer_last_end  # 空字典返回 True
+        return developer_last_end
+        # 空字典返回 True
 
     print("字典为空，开始查找开发人员的最晚计划结束日期")
 
@@ -83,6 +95,10 @@ def calculate_DevloperLastEndDate(excel_file_path):
         # 将结束日期转换为日期类型
         end_date = pd.to_datetime(end_date).date()
 
+        print(f"end_date==============>{end_date}")
+
+        print(f"end_date=>{end_date}:developer_last_end=>{developer_last_end}")
+
         # 如果该开发人员尚未记录结束日期，则直接赋值
         if developer not in developer_last_end:
             developer_last_end[developer] = end_date
@@ -91,11 +107,14 @@ def calculate_DevloperLastEndDate(excel_file_path):
             if end_date > developer_last_end[developer]:
                 developer_last_end[developer] = end_date
 
+
+    for developer, last_end in developer_last_end.items():
+        print(f"Developer: {developer}, Last End Date: {last_end}")
+
     return developer_last_end  # 返回开发人员的最晚结束日期字典
 
 # 根据开发人员的排程情况计算开始日期
 def calculate_start_date(developer, developer_last_end, work_days):
-    calculate_DevloperLastEndDate(input_file)
 
     """
     计算每个开发人员的任务开始日期。如果该开发人员已有任务，开始日期从上一个任务结束的下一工作日开始。
@@ -138,6 +157,14 @@ if default_start_date_input:
 else:
     default_start_date = adjust_to_next_workday(datetime.now().date())
 
+print(f"这是测试的:{developer_last_end}")
+
+
+calculate_DevloperLastEndDate(input_file)
+
+
+
+
 # 加载 Excel 文件
 wb = load_workbook(input_file)
 sheet = wb.active
@@ -176,7 +203,11 @@ for idx, row in df.iterrows():
     # 如果开始日期或结束日期为空，则需要计算
     if pd.isna(start_date) or pd.isna(end_date):
         # 计算开始日期
-        start_date = calculate_start_date(developer, developer_last_end, work_days)
+
+
+        #如果指定了开始日期，则按照开始日期直接计算
+        if pd.isna(start_date):
+            start_date = calculate_start_date(developer, developer_last_end, work_days)
 
         # 计算结束日期
         end_date = calculate_end_date(start_date, work_days)
