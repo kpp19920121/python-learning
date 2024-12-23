@@ -169,6 +169,10 @@ for idx, row in df.iterrows():
     start_date = row["开始日期"]
     end_date = row["结束日期"]
 
+    #如果开发人员为空，则直接跳过
+    if pd.isna(developer) or "/" in developer or  "-" in developer:
+        continue
+
     # 如果开始日期或结束日期为空，则需要计算
     if pd.isna(start_date) or pd.isna(end_date):
         # 计算开始日期
