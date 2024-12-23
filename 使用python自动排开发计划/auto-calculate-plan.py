@@ -158,8 +158,10 @@ for idx, row in df.iterrows():
         end_date = calculate_end_date(start_date, work_days)
 
         # 确保开始日期和结束日期只包含年月日，去掉时分秒
-        df.at[idx, "开始日期"] = pd.to_datetime(start_date).date()
-        df.at[idx, "结束日期"] = pd.to_datetime(end_date).date()
+
+
+        df.at[idx, "开始日期"] = pd.to_datetime(start_date)
+        df.at[idx, "结束日期"] = pd.to_datetime(end_date)
 
         # 为修改过的单元格添加底纹
         #sheet.cell(row=idx + 2, column=columns.index("开始日期") + 1).fill = yellow_fill
