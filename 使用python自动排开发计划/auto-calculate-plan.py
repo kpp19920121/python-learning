@@ -2,6 +2,7 @@ from openpyxl import load_workbook
 from datetime import datetime, timedelta
 import pandas as pd
 from openpyxl.styles import PatternFill
+import os
 
 # 用于存储每个开发人员的上一个任务结束日期
 developer_last_end = {}
@@ -110,13 +111,32 @@ def calculate_start_date(developer, developer_last_end, work_days):
         start_date = adjust_to_next_workday(start_date)
     else:
         # 如果是第一次安排任务，从当前日期开始
-        start_date = adjust_to_next_workday(datetime.now().date())
+        #start_date = adjust_to_next_workday(datetime.now().date())
+        start_date = default_start_date
+
 
     return start_date
 
 # 文件路径配置
-input_file = r"C:\Users\kefan\Desktop\新建文件夹\\全天指令接收需求-开发计划.xlsx"
-output_file = r"C:\Users\kefan\Desktop\新建文件夹\\全天指令接收需求-排好的开发计划.xlsx"
+
+
+# 用户输入 Excel 文件路径
+input_file = input("请输入 Excel 文件路径（如未指定路径，将退出程序）：").strip()
+if not input_file or not os.path.exists(input_file):
+    raise FileNotFoundError(f"文件路径无效或不存在：{input_file}")
+
+output_file = input("请输入输出文件路径：").strip()
+if not output_file:
+    output_file = os.path.splitext(input_file)[0] + "_排好的开发计划.xlsx"
+
+
+# 用户输入默认开始日期
+default_start_date_input = input("请输入默认开始日期（格式：YYYY-MM-DD，留空则为下一个工作日）：").strip()
+if default_start_date_input:
+    default_start_date = datetime.strptime(default_start_date_input, "%Y-%m-%d").date()
+    default_start_date = adjust_to_next_workday(default_start_date)
+else:
+    default_start_date = adjust_to_next_workday(datetime.now().date())
 
 # 加载 Excel 文件
 wb = load_workbook(input_file)
