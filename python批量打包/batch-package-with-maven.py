@@ -5,6 +5,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 # 定义要扫描的根目录
 
+PACKAGE_ERROR_MSG_LIST=[]
+
+
 # 用户输入 Excel 文件路径
 root_directory = input("请输入打包文件源码路径()：").strip()
 if not root_directory or not os.path.exists(root_directory):
@@ -48,6 +51,10 @@ def build_project(project_directory, dist_directory):
                         base_name, ext = os.path.splitext(file)
                         new_war_file_name=file.split('-4.1.2')[0]+ext
                         print(f"重命名后的war包名称为:{war_file}")
+                    elif "4.1.3" in file:
+                        base_name, ext = os.path.splitext(file)
+                        new_war_file_name=file.split('-4.1.3')[0]+ext
+                        print(f"重命名后的war包名称为:{war_file}")
                     else:
                         new_war_file_name=file
             if war_file:
@@ -65,8 +72,10 @@ def build_project(project_directory, dist_directory):
 
     except subprocess.CalledProcessError as e:
         print(f"Build failed for {project_directory}: {e}")
+        PACKAGE_ERROR_MSG_LIST.append(project_directory)
 
-# 主程序
+
+# 主程序c
 def main():
     # 获取用户指定的输出目录，若未输入则使用默认的 dist 目录
     dist_directory = input("Enter the output directory for WAR files (default: './dist'): ").strip()
@@ -82,6 +91,15 @@ def main():
         for project_dir in project_dirs:
             if has_pom_file(project_dir):
                 executor.submit(build_project, project_dir, dist_directory)
+
+
+    print("=================================================打包结果显示开始========================================")
+
+    if PACKAGE_ERROR_MSG_LIST and len(PACKAGE_ERROR_MSG_LIST)>0:
+        print("\033[31m以下包打包失败:\n" + "\n".join(PACKAGE_ERROR_MSG_LIST) + "\033[0m")
+    else:
+        print(f"全部打包成功:")
+    print("=================================================打包结果显示结束========================================")
 
 if __name__ == "__main__":
     main()
