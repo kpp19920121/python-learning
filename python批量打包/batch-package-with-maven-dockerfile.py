@@ -103,6 +103,9 @@ def build_project(project_directory, dist_directory,retries=10, delay=2):
             else:
                 print(f"No WAR file found in {project_directory}")
 
+            # 如果构建成功，退出循环
+            break
+
         except subprocess.CalledProcessError as e:
             print(f"Build failed for {project_directory} (Attempt {attempt + 1} of {retries}): {e}")
             # 如果是 zip 文件损坏错误，打印并重试
