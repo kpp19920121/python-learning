@@ -1,0 +1,117 @@
+
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ifinance-xxx-service 结果报告</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>ifinance-xxx-service 结果报告</h1>
+        <table>
+            <tr>
+                <th>模块名称</th>
+                <th>文件路径</th>
+                <th>替换的 selectId</th>
+                <th>对应的 ResultMap</th>
+            </tr>
+    
+            <tr>
+                <td>ifinance-xxx-service</td>
+                <td>D:\改动增量\架构升级\大唐\svn_project\source\settlement\ifinance-settlement-service\src\main\resources\database\dm\common\commonMapper.xml</td>
+                <td>getDefaultOffice, getInnnerAccountHisBalance, findBankAccountCurrentBalanceList, findBankAccountHistoryBalanceList</td>
+                <td><pre>	<resultMap id="getDefaultOfficeResultMap" type="java.util.Map">
+		<result column="ID" property="key" javaType="java.lang.String"></result>
+		<result column="NAME" property="value" javaType="java.lang.String"></result>
+	</resultMap><br>	<resultMap id="getInnnerAccountHisBalanceResultMap" type="java.util.Map">
+		<result column="ACCOUNTNO" property="AccountNo" javaType="java.lang.String"></result>
+		<result column="BALANCEDATE" property="BalanceDate" javaType="java.lang.String"></result>
+		<result column="CODE" property="CurrencyType" javaType="java.lang.String"></result>
+	</resultMap><br>	<resultMap id="findBankAccountCurrentBalanceListResultMap" type="java.util.Map">
+		<result column="ACCOUNTID" property="accountid" javaType="java.lang.String"></result>
+		<result column="CURRENCYID" property="currencyid" javaType="java.lang.String"></result>
+		<result column="BALANCE" property="balance" javaType="java.lang.String"></result>
+		<result column="USABLEBALANCE" property="usablebalance" javaType="java.lang.String"></result>
+		<result column="ACCOUNTNO" property="accountno" javaType="java.lang.String"></result>
+		<result column="CLIENTID" property="clientid" javaType="java.lang.String"></result>
+	</resultMap><br>	<resultMap id="findBankAccountHistoryBalanceListResultMap" type="java.util.Map">
+		<result column="ACCOUNTID" property="accountid" javaType="java.lang.String"></result>
+		<result column="CURRENCYID" property="currencyid" javaType="java.lang.String"></result>
+		<result column="BALANCE" property="balance" javaType="java.lang.String"></result>
+		<result column="USABLEBALANCE" property="usablebalance" javaType="java.lang.String"></result>
+		<result column="ACCOUNTNO" property="accountno" javaType="java.lang.String"></result>
+		<result column="CLIENTID" property="clientid" javaType="java.lang.String"></result>
+	</resultMap></pre></td>  <!-- 显示所有 ResultMap -->
+            </tr>
+        
+            <tr>
+                <td>ifinance-xxx-service</td>
+                <td>D:\改动增量\架构升级\大唐\svn_project\source\settlement\ifinance-settlement-service\src\main\resources\database\oracle\common\commonMapper.xml</td>
+                <td>getDefaultOffice, getInnnerAccountHisBalance, findBankAccountCurrentBalanceList, findBankAccountHistoryBalanceList</td>
+                <td><pre>	<resultMap id="getDefaultOfficeResultMap" type="java.util.Map">
+		<result column="ID" property="key" javaType="java.lang.String"></result>
+		<result column="NAME" property="value" javaType="java.lang.String"></result>
+	</resultMap><br>	<resultMap id="getInnnerAccountHisBalanceResultMap" type="java.util.Map">
+		<result column="ACCOUNTNO" property="AccountNo" javaType="java.lang.String"></result>
+		<result column="BALANCEDATE" property="BalanceDate" javaType="java.lang.String"></result>
+		<result column="CODE" property="CurrencyType" javaType="java.lang.String"></result>
+	</resultMap><br>	<resultMap id="findBankAccountCurrentBalanceListResultMap" type="java.util.Map">
+		<result column="ACCOUNTID" property="accountid" javaType="java.lang.String"></result>
+		<result column="CURRENCYID" property="currencyid" javaType="java.lang.String"></result>
+		<result column="BALANCE" property="balance" javaType="java.lang.String"></result>
+		<result column="USABLEBALANCE" property="usablebalance" javaType="java.lang.String"></result>
+		<result column="ACCOUNTNO" property="accountno" javaType="java.lang.String"></result>
+		<result column="CLIENTID" property="clientid" javaType="java.lang.String"></result>
+	</resultMap><br>	<resultMap id="findBankAccountHistoryBalanceListResultMap" type="java.util.Map">
+		<result column="ACCOUNTID" property="accountid" javaType="java.lang.String"></result>
+		<result column="CURRENCYID" property="currencyid" javaType="java.lang.String"></result>
+		<result column="BALANCE" property="balance" javaType="java.lang.String"></result>
+		<result column="USABLEBALANCE" property="usablebalance" javaType="java.lang.String"></result>
+		<result column="ACCOUNTNO" property="accountno" javaType="java.lang.String"></result>
+		<result column="CLIENTID" property="clientid" javaType="java.lang.String"></result>
+	</resultMap></pre></td>  <!-- 显示所有 ResultMap -->
+            </tr>
+        
+            <tr>
+                <td>ifinance-xxx-service</td>
+                <td>D:\改动增量\架构升级\大唐\svn_project\source\settlement\ifinance-settlement-service\src\main\resources\database\postgresql\common\commonMapper.xml</td>
+                <td>getInnnerAccountHisBalance, findBankAccountCurrentBalanceList, findBankAccountHistoryBalanceList</td>
+                <td><pre>	<resultMap id="getInnnerAccountHisBalanceResultMap" type="java.util.Map">
+		<result column="ACCOUNTNO" property="AccountNo" javaType="java.lang.String"></result>
+		<result column="BALANCEDATE" property="BalanceDate" javaType="java.lang.String"></result>
+		<result column="CODE" property="CurrencyType" javaType="java.lang.String"></result>
+	</resultMap><br>	<resultMap id="findBankAccountCurrentBalanceListResultMap" type="java.util.Map">
+		<result column="ACCOUNTID" property="accountid" javaType="java.lang.String"></result>
+		<result column="CURRENCYID" property="currencyid" javaType="java.lang.String"></result>
+		<result column="BALANCE" property="balance" javaType="java.lang.String"></result>
+		<result column="USABLEBALANCE" property="usablebalance" javaType="java.lang.String"></result>
+		<result column="ACCOUNTNO" property="accountno" javaType="java.lang.String"></result>
+		<result column="CLIENTID" property="clientid" javaType="java.lang.String"></result>
+	</resultMap><br>	<resultMap id="findBankAccountHistoryBalanceListResultMap" type="java.util.Map">
+		<result column="ACCOUNTID" property="accountid" javaType="java.lang.String"></result>
+		<result column="CURRENCYID" property="currencyid" javaType="java.lang.String"></result>
+		<result column="BALANCE" property="balance" javaType="java.lang.String"></result>
+		<result column="USABLEBALANCE" property="usablebalance" javaType="java.lang.String"></result>
+		<result column="ACCOUNTNO" property="accountno" javaType="java.lang.String"></result>
+		<result column="CLIENTID" property="clientid" javaType="java.lang.String"></result>
+	</resultMap></pre></td>  <!-- 显示所有 ResultMap -->
+            </tr>
+        
+        </table>
+    </body>
+    </html>
+    
