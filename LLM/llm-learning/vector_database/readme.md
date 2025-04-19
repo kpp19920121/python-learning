@@ -52,6 +52,79 @@
 
 
 	- 实现检索增强生成(RAG)功能
+	
+## connect_chroma.py ##
+
+
+- 多格式文档加载
+
+
+	- 支持从指定目录递归加载多种格式文档
+
+
+
+	- 已实现格式：.txt, .docx, .pdf (可通过find_files.py扩展)
+
+
+
+	- 环境变量配置文档根路径（DOCUMENT_ROOT_PATH）
+
+
+
+- 本地化Embedding生成
+
+
+	- 使用Sentence-Transformer本地模型生成向量
+
+
+
+	- 支持自定义模型路径（通过LOCAL_EMBEDDING_PATH配置）
+
+
+
+	- 免API调用，完全离线运行
+
+
+
+	- 默认模型：all-MiniLM-L6-v2（384维）
+
+
+
+- 智能文本分块
+
+
+	- 采用递归分块策略（RecursiveCharacterTextSplitter）
+
+
+
+	- 可配置参数：
+
+
+
+	- chunk_size=500（字符数）
+
+
+
+	- chunk_overlap=50（块间重叠）
+
+
+
+	- 保留文档上下文关联性
+
+
+
+- Chroma向量数据库集成
+
+
+	- 数据持久化存储（persist_directory）
+
+
+
+	- 自动创建集合和索引
+
+
+
+	- 支持后续检索和相似度查询
 
 # 3.配置要求 #
 ## 3.1环境依赖 ##
@@ -67,6 +140,8 @@
 
 - Ollama服务 (已部署)
 
+- 使用本地向量数据chroma库需要依赖Microsoft Visual C++ 14.0 
+
 ## 3.2关键参数配置 ##
 
 		# Milvus连接配置
@@ -81,6 +156,7 @@
 
 	pip install langchain_community sentence-transformers jinja2 python-multipart fastapi docx2txt uvicorn langchain milvus pymilvus python-docx -i https://pypi.tuna.tsinghua.edu.cn/simple
 
+	pip install chardet sentence_transformers langchain_community Chroma chromadb  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 - 
@@ -130,19 +206,23 @@
 ## 启动服务： ##
 
 	python connect_milvus.py
+
+	python connect_chroma.py
 ## 访问接口 ##
 
 
 
-- 前端页面：http://localhost:8000
+- python connect_milvus.py
+
+	- 前端页面：http://localhost:8000
 
 
 
-- 上传接口：POST /upload
+	- 上传接口：POST /upload
 
 
 
-- 问答接口：POST /ask/
+	- 问答接口：POST /ask/
 
 # 5.扩展说明 #
 
@@ -173,18 +253,20 @@
 
 # 6.使用示例 #
 
+- python connect_milvus.py
 
-- 上传文档：
-
-
-		curl -X POST -F "file=@example.docx" http://localhost:8000/upload
+	- 上传文档：
 
 
+			curl -X POST -F "file=@example.docx" http://localhost:8000/upload
 
-- 提问测试：
 
 
-		curl -X POST -H "Content-Type: application/json" -d '{"question":"文档主要内容是什么？"}' http://localhost:8000/ask/
+	- 提问测试：
+
+
+			curl -X POST -H "Content-Type: application/json" -d '{"question":"文档主要内容是什么？"}' http://localhost:8000/ask/
+
 # 7.注意事项 #
 
 

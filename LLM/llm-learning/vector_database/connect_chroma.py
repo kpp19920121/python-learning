@@ -4,16 +4,28 @@ from sentence_transformers import SentenceTransformer
 from  langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
+
+from  dotenv import  find_dotenv,load_dotenv
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from vector_database import find_files
 
 
+env_path=find_dotenv()
+
+load_dotenv(env_path)
+
 
 #1.加载文档
-documents=find_files.get_documents("F:/repository/git_repository/document/运维")
+document_root_path=os.environ['DOCUMENT_ROOT_PATH']
+
+documents=find_files.get_documents(document_root_path)
 
 #2.构建embedding
-model = SentenceTransformer('../models/all-MiniLM-L6-v2')
+module_path=os.environ['LOCAL_EMBEDDING_PATH']
+
+model = SentenceTransformer(module_path)
+
 embeddings = model.encode(sentences="要生成 embedding 的输入文本，字符串形式。")
 
 
