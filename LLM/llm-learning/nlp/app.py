@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, jsonify
 from keybert import KeyBERT
 from textblob import TextBlob
@@ -5,12 +6,17 @@ from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lsa import LsaSummarizer
 
+from dotenv import load_dotenv,find_dotenv
+
 # 创建 Flask 应用
 app = Flask(__name__)
+env_path=find_dotenv()
+
+load_dotenv(env_path)
 
 # 初始化关键词提取模型（离线模式）
 # KeyBERT 通过下载模型，通常会在首次使用时缓存模型。使用 `local_files_only=True` 以避免再次尝试下载。
-module_path="./models/all-MiniLM-L6-v2"
+module_path=os.environ["LOCAL_EMBEDDING_PATH"]
 kw_model = KeyBERT(model=module_path)  # 指定一个本地可用模型名称
 
 # 初始化文本摘要器（LSA算法）
