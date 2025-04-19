@@ -2,7 +2,8 @@
 
 	├─vector_database
 	│  │  app.py
-	│  │  connect_milvis.py 
+	│  │  connect_milvis.py
+	│  │  connect_chroma.py  
 	│  │  find_files.py
 	│  │  readme.md
 
@@ -10,6 +11,10 @@
 - connect_milvis.py
 
 	FastAPI应用，模拟知识库问答。 
+
+- connect_milvis.py
+
+	基于内存向量数据库的简易知识库
 
 # 2.功能特性 #
 ## connect_milvis.py ##

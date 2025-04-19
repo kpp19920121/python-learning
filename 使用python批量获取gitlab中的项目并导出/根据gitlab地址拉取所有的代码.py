@@ -13,6 +13,7 @@ user_input_base_url = input("请输入gitlab地址默认(https://192.168.233.133
 base_url = user_input_base_url if user_input_base_url else detault_base_url
 
 
+
 #gitlab中配置的token
 token = "-KJgwpw9UCNaXHT2G-xx"  # 替换为你生成的 Token
 
