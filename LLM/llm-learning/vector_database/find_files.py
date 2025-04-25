@@ -10,7 +10,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from dataprocess import readdocument
 
-ROOT_PATH="F:/repository/git_repository/document"
 ROOT_PATH="F:/repository/git_repository/document/运维"
 
 #每个文件的loader
@@ -38,6 +37,11 @@ def get_documents(root_folder:str)->list[Document]:
     return return_list
 
 
+if  __name__=='__main__':
+    documents=get_documents(ROOT_PATH)
+
+    for temp in documents:
+        print("文件元信息 => " + temp.metadata)
 
 
 

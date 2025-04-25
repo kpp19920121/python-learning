@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv, find_dotenv
 
 import requests
+from langchain_community.chat_models import ChatOpenAI
 
 # 寻找环境变量的位置
 print("开始加载环境变量")
@@ -27,10 +28,15 @@ from openai import OpenAI
 
 openAIclient = OpenAI(api_key=open_api_key,base_url="https://api.openai.com/")
 
+
+ChatOpenAI(temperature=0.0)
 chatCompletion = openAIclient.chat.completions.create(model="gpt-3.5-turbo", messages=[
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "请介绍一下你自己!"}
 ])
+
+
+
 
 choiceList = chatCompletion.choices
 

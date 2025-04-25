@@ -2,22 +2,22 @@
 
 	├─vector_database
 	│  │  app.py
-	│  │  connect_milvis.py
-	│  │  connect_chroma.py  
+	│  │  connect_milvis_demo.py
+	│  │  connect_chroma_demo.py  
 	│  │  find_files.py
 	│  │  readme.md
 
 
-- connect_milvis.py
+- connect_milvis_demo.py
 
 	FastAPI应用，模拟知识库问答。 
 
-- connect_milvis.py
+- connect_milvis_demo.py
 
 	基于内存向量数据库的简易知识库
 
 # 2.功能特性 #
-## connect_milvis.py ##
+## connect_milvis_demo.py ##
 
 
 - 文档处理：
@@ -58,7 +58,7 @@
 
 	- 实现检索增强生成(RAG)功能
 	
-## connect_chroma.py ##
+## connect_chroma_demo.py ##
 
 
 - 多格式文档加载
@@ -159,7 +159,7 @@
 # 4.安装与运行 #
 ## 安装依赖 ##
 
-	pip install langchain_community sentence-transformers jinja2 python-multipart fastapi docx2txt uvicorn langchain milvus pymilvus python-docx -i https://pypi.tuna.tsinghua.edu.cn/simple
+	pip install langchain_community  sentence-transformers jinja2 python-multipart fastapi docx2txt uvicorn langchain milvus pymilvus python-docx -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 	pip install chardet sentence_transformers langchain_community Chroma chromadb  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
@@ -212,7 +212,7 @@
 
 	python connect_milvus.py
 
-	python connect_chroma.py
+	python connect_chroma_demo.py
 ## 访问接口 ##
 
 
