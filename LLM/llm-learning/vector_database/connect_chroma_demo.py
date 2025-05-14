@@ -12,10 +12,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from  dotenv import  find_dotenv,load_dotenv
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from vector_database import find_files
+import find_files
 
 
-from embedding.local_embedding import LocalEmbedding
+
+from  ..embedding.local_embedding import LocalEmbedding
+
 env_path=find_dotenv()
 
 load_dotenv(env_path)

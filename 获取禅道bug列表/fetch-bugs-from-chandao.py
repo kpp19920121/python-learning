@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+import hashlib
 # 禅道的 URL 地址
 bug_url = "http://10.137.25.87:8088/zentao/project-bug-658-0-0-status,id_desc-0-all-0-231-300-1.html?tid=mmwgigby"
 login_url = "http://10.137.25.87:8088/zentao/user-login.html"  # 登录接口的 URL
@@ -8,6 +9,37 @@ login_url = "http://10.137.25.87:8088/zentao/user-login.html"  # 登录接口的
 # 禅道的用户名和密码
 username = "fankea"  # 替换为实际的用户名
 password = "Kpp19920121@123.com"  # 替换为实际的密码
+
+def compute_password_strength(password):
+    if len(password) == 0:
+        return 0
+
+    strength = 0
+    complexity = set()  # 使用集合来避免重复计算
+
+    for char in password:
+        asc = ord(char)
+        if 48 <= asc <= 57:        # 数字
+            complexity.add(1)
+        elif 65 <= asc <= 90:      # 大写字母
+            complexity.add(2)
+        elif 97 <= asc <= 122:     # 小写字母
+            complexity.add(4)
+        else:                      # 特殊字符
+            complexity.add(8)
+
+    sum_complexity = sum(complexity)
+
+    # 判断强度规则
+    if (sum_complexity in {7, 15}) and len(password) >= 6:
+        strength = 1
+    if sum_complexity == 15 and len(password) >= 10:
+        strength = 2
+
+    return strength
+
+
+print(f"password=>"+hashlib.md5(password.encode("utf-8")).hexdigest())
 
 # 创建一个会话对象，保持会话状态
 session = requests.Session()

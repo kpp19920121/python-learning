@@ -1,8 +1,11 @@
 import streamlit as st
 import os,sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
-from langchain_llm.ollama import connect_ollama
+
+
+from ..langchain_llm.ollama import connect_ollama
 
 st.title="动手学大模型开发"
 
@@ -12,7 +15,7 @@ def generate_response(message):
 
     print(f"开始对话:{message}")
 
-    response=connect_ollama.chatwithollama(message);
+    response=chatwithollama(message);
 
 
 
