@@ -3,12 +3,12 @@ from bs4 import BeautifulSoup
 
 import hashlib
 # 禅道的 URL 地址
-bug_url = "http://10.137.25.87:8088/zentao/project-bug-658-0-0-status,id_desc-0-all-0-231-300-1.html?tid=mmwgigby"
-login_url = "http://10.137.25.87:8088/zentao/user-login.html"  # 登录接口的 URL
+bug_url = "http://xxx:8088/zentao/project-bug-658-0-0-status,id_desc-0-all-0-231-300-1.html?tid=mmwgigby"
+login_url = "http://xxx:8088/zentao/user-login.html"  # 登录接口的 URL
 
 # 禅道的用户名和密码
-username = "fankea"  # 替换为实际的用户名
-password = "Kpp19920121@123.com"  # 替换为实际的密码
+username = "xxx"  # 替换为实际的用户名
+password = "xxx@123.com"  # 替换为实际的密码
 
 def compute_password_strength(password):
     if len(password) == 0:
